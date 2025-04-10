@@ -1,0 +1,264 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'AstonPoliz';
+  src: url('/fonts/AstonPoliz.woff2') format('woff2'),
+       url('/fonts/AstonPoliz.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --background: 240 20% 3%; /* Deep black with a hint of blue */
+    --foreground: 0 0% 98%; /* Almost white */
+
+    --card: 240 20% 3%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 20% 3%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 270 70% 50%; /* Vibrant purple */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 5% 10%; /* Dark gray with slight purple tint */
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 270 70% 50%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5% 15%;
+    --input: 240 5% 15%;
+    --ring: 270 70% 50%;
+
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border selection:bg-accent/20 selection:text-accent;
+  }
+  
+  html {
+    @apply scroll-smooth antialiased;
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "kern", "liga", "calt";
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+    width: 100%;
+  }
+}
+
+/* Responsive glass components */
+.glass-panel {
+  @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-xl;
+}
+
+.neo-glass {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)];
+}
+
+.cyber-border {
+  @apply relative;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1),
+              0 0 0 2px rgba(138, 43, 226, 0.1);
+}
+
+.cyber-border::before {
+  content: '';
+  @apply absolute inset-0 border border-purple-500/20 rounded-lg pointer-events-none;
+  box-shadow: inset 0 0 8px rgba(138, 43, 226, 0.3);
+}
+
+.cyberpunk-glow {
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.5),
+              0 0 20px rgba(138, 43, 226, 0.3),
+              0 0 30px rgba(138, 43, 226, 0.1);
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-indigo-600;
+}
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.5),
+               0 0 20px rgba(138, 43, 226, 0.3);
+}
+
+.font-aston {
+  font-family: 'AstonPoliz', sans-serif;
+}
+
+/* Animation utility classes */
+.animate-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animate-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animate-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animate-delay-500 {
+  animation-delay: 500ms;
+}
+
+.animate-delay-700 {
+  animation-delay: 700ms;
+}
+
+.animate-delay-1000 {
+  animation-delay: 1000ms;
+}
+
+.animate-duration-1000 {
+  animation-duration: 1000ms;
+}
+
+.animate-duration-1500 {
+  animation-duration: 1500ms;
+}
+
+.animate-duration-2000 {
+  animation-duration: 2000ms;
+}
+
+/* Interactive Animations */
+.hover-float {
+  @apply transition-transform duration-300 hover:-translate-y-1;
+}
+
+.hover-glow {
+  @apply transition-all duration-300;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 8px rgba(138, 43, 226, 0.5);
+}
+
+.interactive-border {
+  @apply relative after:absolute after:inset-0 after:border after:border-purple-500/0 after:rounded-lg after:transition-all after:duration-300;
+}
+
+.interactive-border:hover::after {
+  @apply after:border-purple-500/40 after:scale-[1.02];
+}
+
+/* Background effects and utilities */
+.digital-noise {
+  position: relative;
+  overflow: hidden;
+}
+
+.digital-noise::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+/* Scroll utilities */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-visible-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.no-visible-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Tech scanner effect */
+.scanner {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanner::after {
+  content: "";
+  position: absolute;
+  top: -150%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(138, 43, 226, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  animation: scan 6s linear infinite;
+}
+
+@keyframes scan {
+  0% {
+    top: -150%;
+  }
+  100% {
+    top: 150%;
+  }
+}
+
+/* Responsive padding and margin helpers */
+@layer utilities {
+  .p-responsive {
+    @apply p-4 sm:p-6 md:p-8;
+  }
+  
+  .px-responsive {
+    @apply px-4 sm:px-6 md:px-8;
+  }
+  
+  .py-responsive {
+    @apply py-4 sm:py-6 md:py-8;
+  }
+  
+  .m-responsive {
+    @apply m-4 sm:m-6 md:m-8;
+  }
+  
+  .mx-responsive {
+    @apply mx-4 sm:mx-6 md:mx-8;
+  }
+  
+  .my-responsive {
+    @apply my-4 sm:my-6 md:my-8;
+  }
+}
