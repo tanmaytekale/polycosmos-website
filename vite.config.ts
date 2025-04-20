@@ -5,11 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/polycosmos-website/',
-  server: {
-    host: '::',
-    port: 8080,
-  },
+  base: '/',
   plugins: [
     react(),
     mode === 'development' &&
