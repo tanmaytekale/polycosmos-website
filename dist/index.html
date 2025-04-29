@@ -8,15 +8,16 @@
     <meta name="author" content="polycosmos" />
     <meta property="og:image" content="/og-image.png" />
 
-    <!-- 🔁 Fix GitHub Pages reload route handling -->
+    <!-- ✅ Only handle redirect if query param is present -->
     <script>
-      const redirect = new URLSearchParams(location.search).get('redirect');
-      if (redirect) {
-        history.replaceState(null, '', redirect);
+      const params = new URLSearchParams(window.location.search);
+      const redirectPath = params.get("redirect");
+      if (redirectPath) {
+        window.history.replaceState({}, '', redirectPath);
       }
     </script>
 
-    <!-- ✅ Use relative paths (keep ./assets) -->
+    <!-- ✅ Load your JS/CSS normally -->
     <script type="module" crossorigin src="./assets/index-Cq6aYudH.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/index-BIlrL9Jf.css">
   </head>
