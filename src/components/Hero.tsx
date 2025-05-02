@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import RotatingText from './ui/RotatingText';
 
 const heroStyles = `
   @font-face {
@@ -69,7 +68,7 @@ const Hero = () => {
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
                 transform: 'translateY(20px)',
-                transition: 'all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)'
+                transition: 'all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1)',
               }}
             />
           ))}
